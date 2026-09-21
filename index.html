@@ -329,9 +329,14 @@
                 </div>
             </div>
 
-            <button onclick="closeFinishSessionModal()" class="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-xs font-bold py-3 rounded-xl shadow-md transition">
-                ダッシュボードで確認する
-            </button>
+            <div class="flex gap-2">
+                <button onclick="closeFinishSessionModal(false)" class="w-1/2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold py-3 rounded-xl transition">
+                    戻る
+                </button>
+                <button onclick="closeFinishSessionModal(true)" class="w-1/2 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-xs font-bold py-3 rounded-xl shadow-md transition">
+                    ダッシュボードで確認する
+                </button>
+            </div>
         </div>
     </div>
 
@@ -886,9 +891,11 @@
             document.getElementById('finishSessionModal').classList.remove('hidden');
         };
 
-        window.closeFinishSessionModal = function() {
+        window.closeFinishSessionModal = function(goToDashboard) {
             document.getElementById('finishSessionModal').classList.add('hidden');
-            switchView('dashboard');
+            if (goToDashboard) {
+                switchView('dashboard');
+            }
         };
 
         window.switchView = function(viewName) {
